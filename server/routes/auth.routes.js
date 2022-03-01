@@ -12,7 +12,7 @@ router.post('/registro', (req, res, next) => {
 
   // res.json("esto es el registro");
 
-  const { email, password, username } = req.body
+  const { email, password, username, description, age, linkedin } = req.body
   console.log(req.body)
 
   if (email === '' || password === '' || username === '') {

@@ -28,17 +28,17 @@ const userSchema = new Schema(
 
     age: {
       type: Number,
-      // required: true,
+      required: true,
     },
 
     level: {
       type: String,
-      // required: true,
+
       enum: ['Profesional', 'Amateur']
     },
 
     linkedin: {
-      // required: true,
+      required: true,
       type: String,
     },
 
