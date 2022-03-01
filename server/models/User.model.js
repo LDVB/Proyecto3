@@ -27,6 +27,7 @@ const userSchema = new Schema(
     },
 
     age: {
+<<<<<<< HEAD
       type: Number,
       required: true,
     },
@@ -35,11 +36,17 @@ const userSchema = new Schema(
       type: String,
 
       enum: ['Profesional', 'Amateur']
+=======
+      type: String,
+      required: true,
+      default: "campo edad obligatorio"
+>>>>>>> refs/remotes/origin/main
     },
 
     linkedin: {
       required: true,
       type: String,
+      default: "adjunta tu linkedin"
     },
 
     description: {

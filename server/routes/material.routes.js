@@ -16,12 +16,7 @@ router.get("/listado", (req, res, next) => {
 //libros - listado
 
 router.get("/libros", (req, res, next) => {
-  // res.json("esto son libros ");
-  Material
-    .find()
-    .select('name imageUrl website')
-    .then(response => res.json(response))
-    .catch(err => res.status(500).json(err))
+  //res.json("esto son libros ");
 });
 
 
