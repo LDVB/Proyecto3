@@ -13,7 +13,7 @@ router.get("/listado", (req, res, next) => {
 //libros - listado
 
 router.get("/libros", (req, res, next) => {
-    res.json("esto son libros ");
+    //res.json("esto son libros ");
   });
 
 
