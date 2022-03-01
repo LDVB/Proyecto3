@@ -6,44 +6,44 @@ const jwt = require('jsonwebtoken')
 const { isAuthenticated } = require('./../middlewares/jwt.middleware')
 const saltRounds = 10
 
+
 //registro
 
 router.post('/registro', (req, res, next) => {
 
   // res.json("esto es el registro");
 
-  const { email, password, username, description, age, linkedin } = req.body
-  console.log(req.body)
+  const { email, password, username, avatar, age, linkedin, description } = req.body
+
 
   if (email === '' || password === '' || username === '') {
     res.status(400).json({ message: "Introduce una contraseña y un nombre de usuario" })
     return
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
   if (!emailRegex.test(email)) {
     res.status(400).json({ message: 'Introduce una dirección de email correcta.' })
     return
   }
 
   if (password.length < 2) {
-    res.status(400).json({ message: 'El password ha de tener como mínimo 6 carácteres, un número, una letra mayúscula y otra minúscula' })
+    res.status(400).json({ message: 'La contraseña ha de tener como mínimo 6 carácteres.' })
     return
   }
 
-  console.log(req.body)
   User
     .findOne({ email })
     .then((foundUser) => {
       if (foundUser) {
-        res.status(400).json({ message: "El usuario existe ya" })
+        res.status(400).json({ message: "El usuario ya existe" })
         return
       }
 
       const salt = bcrypt.genSaltSync(saltRounds)
       const hashedPassword = bcrypt.hashSync(password, salt)
 
-      return User.create({ email, password: hashedPassword, username })
+      return User.create({ email, password: hashedPassword, username, avatar, age, linkedin, description })
     })
     .then((createdUser) => {
       const { email, username, _id } = createdUser
