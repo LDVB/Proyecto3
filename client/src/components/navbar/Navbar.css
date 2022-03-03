@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .navMenu {
+    display:flex;
+    justify-content: space-around;
+    align-items: right;
+    background: #1c1f2f;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .navMenu a {
+    color: #f6f4e6;
+    text-decoration: none;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: inline-block;
+    width: 80px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .navMenu a:hover {
+    color :linear-gradient(0deg, rgba(97,195,34,1) 0%, rgba(45,252,253,1) 100%);
+  }
+
+  
