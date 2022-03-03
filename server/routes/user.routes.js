@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 //eventos
 
-router.use("/eventos", require('./eventos.routes'))
+router.use("/eventos", require('./events.routes'))
 
 //materiales
 

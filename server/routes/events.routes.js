@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const { isAuthenticated } = require('./../middlewares/jwt.middleware')
-const Event = require("./../models/Event.model");
-const User = require("./../models/User.model");
-const Comment = require("./../models/Comment.model");
+const { isAuthenticated } = require('../middlewares/jwt.middleware')
+const Event = require("../models/Event.model");
+const User = require("../models/User.model");
+const Comment = require("../models/Comment.model");
 
 //creación Evento
 
