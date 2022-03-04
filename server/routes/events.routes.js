@@ -4,13 +4,15 @@ const Event = require("../models/Event.model");
 const User = require("../models/User.model");
 const Comment = require("../models/Comment.model");
 
-//creación Evento
+//creación Evento 
 
 router.post("/crear-evento", isAuthenticated, (req, res, next) => {
 
   //res.json("esto es la creación de eventos ")
 
   const event = { ...req.body, owner: req.payload._id }
+
+  console.log('DEBERIA TENER LA LOCALIZACION', event)
 
   Event
     .create(event)
@@ -21,22 +23,19 @@ router.post("/crear-evento", isAuthenticated, (req, res, next) => {
 
 //modificar Evento
 
-router.post("/modificar-evento/:id", (req, res, next) => {
-
-  //res.json("esto es la modificación de eventos ");
+router.put("/modificar-evento/:id", isAuthenticated, (req, res, next) => {
 
   const { id } = req.params
 
   Event
-    .findByIdAndUpdate(id)
-    .select('name, date, location, image, description')
+    .findByIdAndUpdate(id, req.body)
     .then(response => res.json(response))
     .catch(err => res.status(500).json(err))
 });
 
 //borrar Evento  
 
-router.post("/borrar-evento/:id", (req, res, next) => {
+router.delete("/borrar-evento/:id", (req, res, next) => {
 
   //res.json("esto es la eliminación de eventos ");
   const { id } = req.params
@@ -57,7 +56,7 @@ router.get("/listado", (req, res, next) => {
 
   Event
     .find()
-    .select(' name, date, image ')
+    .select('name date image')
     .then(response => res.json(response))
     .catch(err => res.status(500).json(err))
 });

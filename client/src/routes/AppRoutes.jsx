@@ -9,6 +9,8 @@ import NewEventForm from '../components/NewEventForm/NewEventForm'
 import PrivateRoute from './PrivateRoute'
 import MaterialPage from '../pages/MaterialPage/MaterialPage'
 
+import EventDetailsPage from ".././pages/EventDetailsPage/EventDetailsPage"
+import EditEventForm from '../components/EditEventForm/EditEventForm'
 
 const AppRoutes = () => {
 
@@ -24,6 +26,9 @@ const AppRoutes = () => {
             <Route path="/eventos/crear-evento" element={<NewEventForm />} />
             <Route path="/material" element={<MaterialPage />} />
 
+            <Route path="/eventos/detalles/:id" element={<EventDetailsPage />} />
+            <Route path="/eventos/crear-evento" element={<NewEventForm />} />
+            <Route path="/eventos/modificar-evento/:id" element={<EditEventForm />} />
 
             {/* RESTO DE RUTAS */}
             {/* + AÑADIR 404 */}
