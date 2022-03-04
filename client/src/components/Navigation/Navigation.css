@@ -5,6 +5,15 @@
     box-sizing: border-box;
   }
 
+  .navbar{
+    height: 40px;
+    width: 100%;
+    background: red; 
+  }
+
+  
+
+/* 
   .navMenu {
     display:flex;
     justify-content: space-around;
@@ -28,6 +37,4 @@
   
   .navMenu a:hover {
     color :linear-gradient(0deg, rgba(97,195,34,1) 0%, rgba(45,252,253,1) 100%);
-  }
-
-  
+  } */

@@ -1,16 +1,15 @@
 
 .footer{
-
-    position: fixed;
-    bottom: 0;
+    position:fixed;
+    bottom: 0px;
     width: 100%;
-    padding: 17px 0;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #1c1f2f;
-    border-top: 1px solid #313646;
-    color: #b0b0b0;
-    
+    background-color: #b8bac2;
+    border-top: 1px solid #b8bac2;
+    color: #fdfdfd;
+    z-index: 2;
 }
 
