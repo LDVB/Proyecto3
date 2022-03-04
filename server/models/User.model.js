@@ -22,25 +22,20 @@ const userSchema = new Schema(
       required: true
     },
 
+    level: {
+      enum: ['AMATEUR', 'PROFESSIONAL'],
+      type: String
+
+    },
+
     avatar: {
       type: String,
     },
 
     age: {
-<<<<<<< HEAD
-      type: Number,
-      required: true,
-    },
-
-    level: {
-      type: String,
-
-      enum: ['Profesional', 'Amateur']
-=======
       type: String,
       required: true,
       default: "campo edad obligatorio"
->>>>>>> refs/remotes/origin/main
     },
 
     linkedin: {
@@ -69,4 +64,8 @@ const userSchema = new Schema(
 );
 
 
-module.exports = model("User", userSchema);
+const User = model("User", userSchema);
+
+User.syncIndexes();
+
+module.exports = User
