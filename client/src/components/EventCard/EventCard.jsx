@@ -1,6 +1,6 @@
 import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-// import '../EventCard/EventCard.css'
+
 
 const EventCard = ({ name, date, location, image, description, _id }) => {
     return (
@@ -8,8 +8,8 @@ const EventCard = ({ name, date, location, image, description, _id }) => {
             <Card.Img variant="top" src={image} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
-                <Card.Title>{location}</Card.Title>
-                <Link to={`/detalles/${_id}`}>
+                <Card.Title>{date.slice(0, 10)}</Card.Title>
+                <Link to={`/eventos/detalles/${_id}`}>
                     <div className="d-grid gap-2">
                         <Button variant="light">Ver detalles</Button>
                     </div>

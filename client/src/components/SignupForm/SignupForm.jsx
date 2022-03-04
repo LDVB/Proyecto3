@@ -9,7 +9,7 @@ function SignupForm() {
         username: "",
         password: "",
         email: "",
-        avatar: "",
+        image: "",
         level: "",
         age: "",
         linkedin: "",
@@ -65,7 +65,7 @@ function SignupForm() {
 
             <Form.Group>
                 <Form.Label>Photo</Form.Label>
-                <Form.Control type="file" name="avatar" value={signupForm.avatar} onChange={handleInputChange} />
+                <Form.Control type="file" name="image" value={signupForm.avatar} onChange={handleInputChange} />
             </Form.Group>
 
             <Form.Group>

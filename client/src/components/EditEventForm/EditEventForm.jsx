@@ -1,11 +1,10 @@
 import { useState, useContext } from 'react'
 import { Form, Button } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../context/auth.context'
+import { useNavigate, useParams } from 'react-router-dom'
 import eventsService from '../../services/events.service'
 import uploadService from '../../services/upload.service'
 
-const NewEventForm = () => {
+const EditEventForm = () => {
 
     const [eventData, setEventData] = useState({
         name: '',
@@ -15,9 +14,11 @@ const NewEventForm = () => {
         description: ''
     })
 
+    const { id } = useParams()
+    console.log(id)
+
     const { name, date, location, image, description } = eventData
 
-    const { getToken } = useContext(AuthContext)
 
     const [loadingImage, setLoadingImage] = useState(false)
 
@@ -55,16 +56,17 @@ const NewEventForm = () => {
 
         e.preventDefault()
 
-        const token = getToken();
-
-        console.log(token)
-
         eventsService
-            .createEvent(eventData, token)
-            .then((response) => console.log("se ha creado el evento", response.data))
-            .then(() => navigate("/eventos/listado"))
+            .editOneEvent(id, eventData)
+            .then(({ data }) => {
+                console.log("se ha modificado el evento", data)
+                navigate("/eventos/listado")
+            })
+
             .catch(err => console.log(err))
     }
+
+
 
     return ( // añadir container y row 
         <Form onSubmit={handleSubmit}>
@@ -94,7 +96,7 @@ const NewEventForm = () => {
             </Form.Group>
 
             <div className="d-grid gap-2">
-                {!loadingImage ? <Button variant="light" type="submit">Crear evento</Button> : <button disabled>Cargando...</button>}
+                {!loadingImage ? <Button variant="light" type="submit">Modificar evento</Button> : <button disabled>Cargando...</button>}
             </div>
 
         </Form >
@@ -102,4 +104,4 @@ const NewEventForm = () => {
 
 }
 
-export default NewEventForm
+export default EditEventForm
