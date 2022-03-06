@@ -7,8 +7,8 @@ import UserPage from '../pages/UserPage/UserPage'
 import EventsListPage from '../pages/EventsListPage/EventsListPage'
 import NewEventForm from '../components/NewEventForm/NewEventForm'
 import PrivateRoute from './PrivateRoute'
-import MaterialPage from '../pages/MaterialPage/MaterialPage'
-
+// import MaterialPage from '../pages/MaterialDetailsPage.jsx/MaterialPage'
+// import MaterialDetailsPage from ".././pages/MaterialDetailsPage/MaterialDetailsPage"
 import EventDetailsPage from ".././pages/EventDetailsPage/EventDetailsPage"
 import EditEventForm from '../components/EditEventForm/EditEventForm'
 
@@ -16,7 +16,7 @@ const AppRoutes = () => {
 
     return (
 
-        <Routes className= 'routes'>
+        <Routes className='routes'>
 
             <Route path="/" element={<IndexPage />} />
             <Route path="/registro" element={<SignupPage />} />
@@ -24,8 +24,8 @@ const AppRoutes = () => {
             <Route path="/eventos/listado" element={<EventsListPage />} />
             {/* <Route path="/eventos/detalles/:id" element={<EventDetailsPage />} /> */}
             <Route path="/eventos/crear-evento" element={<NewEventForm />} />
-            <Route path="/material" element={<MaterialPage />} />
-
+            {/* <Route path="/material" element={<MaterialPage />} /> */}
+            {/* <Route path="/material/libros" element={<MaterialDetailsPage />} /> */}
             <Route path="/eventos/detalles/:id" element={<EventDetailsPage />} />
             <Route path="/eventos/crear-evento" element={<NewEventForm />} />
             <Route path="/eventos/modificar-evento/:id" element={<EditEventForm />} />

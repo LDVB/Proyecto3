@@ -92,7 +92,7 @@ const EditEventForm = () => {
 
             <Form.Group className="mb-3" controlId="description">
                 <Form.Label>Descripción</Form.Label>
-                <Form.Control type="text" value={description} onChange={handleInputChange} name="description" />
+                <textarea value={description} onChange={handleInputChange} name="description" />
             </Form.Group>
 
             <div className="d-grid gap-2">

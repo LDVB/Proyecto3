@@ -1,7 +1,7 @@
-import './Material.css'
+import './MaterialCard.css'
 import { useNavigate, Link } from 'react-router-dom'
 
-const Material = () => {
+const MaterialCard = () => {
 
     return (
 
@@ -20,7 +20,7 @@ const Material = () => {
                 </Link>
             </li>
             <li>
-                <Link to="/material"  class="card">
+                <Link to="/material" class="card">
                     <img src="https://www.esri.ie/system/files/styles/traditional_television/private/media/images/2018-12/18%20December%202018%20Hero%20image%20for%20B%20E.jpg?h=ce5f084e&itok=H3eMa6qE" class="card__image" alt="Eventos" />
                     <div class="card__overlay">
                         <div class="card__header">
@@ -38,4 +38,4 @@ const Material = () => {
 
 }
 
-export default Material
+export default MaterialCard
