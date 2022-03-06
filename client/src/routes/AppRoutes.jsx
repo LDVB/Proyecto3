@@ -6,7 +6,9 @@ import UserPage from '../pages/UserPage/UserPage'
 import EventsListPage from '../pages/EventsListPage/EventsListPage'
 import NewEventForm from '../components/NewEventForm/NewEventForm'
 import PrivateRoute from './PrivateRoute'
-import EventDetailsPage from '.././pages/EventDetailsPage/EventDetailsPage'
+import MaterialPage from '../pages/MaterialDetailsPage.jsx/MaterialPage'
+import MaterialDetailsPage from ".././pages/MaterialDetailsPage/MaterialDetailsPage"
+import EventDetailsPage from ".././pages/EventDetailsPage/EventDetailsPage"
 import EditEventForm from '../components/EditEventForm/EditEventForm'
 import MaterialDetailsPage from '.././pages/MaterialDetailsPage/MaterialDetailsPage'
 import BooksPage from '../pages/BooksPage/BooksPage'
