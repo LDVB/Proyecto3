@@ -7,10 +7,14 @@ const materialSchema = new Schema(
             unique: true,
             required: true,
         },
-        
+
+        type: {
+            enum: ['Book', 'Coworking']
+        },
+
         details: {
             type: String,
-            
+
         },
 
         image: {

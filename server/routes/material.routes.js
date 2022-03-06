@@ -1,64 +1,33 @@
 const router = require("express").Router();
 const Material = require("../models/Material.model");
 
-//Listado
-
+//Listado Material
 router.get("/listado", (req, res, next) => {
-  // res.json("esto es materiales ");
 
   Material
     .find()
-    .select('name imageUrl website')
     .then(response => res.json(response))
     .catch(err => res.status(500).json(err))
 });
 
-//libros - listado
-
+//Listado Libros
 router.get("/libros", (req, res, next) => {
-  //res.json("esto son libros ");
-});
-
-
-//libro - detalles
-
-router.get("/libros/:id", (req, res, next) => {
-  // res.json("esto es el detalle del libro");
-
-  const { material_id } = req.params
 
   Material
-    .findById(material_id)
+    .find({ type: 'Book' })
     .then(response => res.json(response))
     .catch(err => res.status(500).json(err))
 });
 
 
-// Coworking - listado
-
+// Listado Coworking
 router.get("/coworking", (req, res, next) => {
-  // res.json("esto son los espacio de coworking ");
+
   Material
-    .find()
-    .select('name imageUrl buy')
+    .find({ type: 'Coworking' })
     .then(response => res.json(response))
     .catch(err => res.status(500).json(err))
 });
-
-
-//Coworking - detalles
-
-router.get("/coworking/:id", (req, res, next) => {
-  // res.json("esto es el espacio de coworking");
-  const { material_id } = req.params
-
-  Material
-    .findById(material_id)
-    .then(response => res.json(response))
-    .catch(err => res.status(500).json(err))
-});
-
-
 
 
 module.exports = router;

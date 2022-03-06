@@ -29,8 +29,8 @@ class EventsService {
         return this.api.get(`/detalles/${id}`)
     }
 
-    editOneEvent = (id, asdsda) => {
-        return this.api.put(`/modificar-evento/${id}`, asdsda)
+    editOneEvent = (id, event) => {
+        return this.api.put(`/modificar-evento/${id}`, event)
     }
 
     deleteOneEvent = id => {

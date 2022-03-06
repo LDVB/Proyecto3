@@ -7,8 +7,6 @@ import { useNavigate, Link } from 'react-router-dom'
 import { AuthContext } from '../../context/auth.context'
 import { useContext } from 'react'
 // import userService from '../../services/user.service'
-import materialImage from './material.png'
-import networkingImage from './networking.jpeg'
 import { useEffect, useState } from 'react'
 import MaterialCard from "../../components/MaterialCard/MaterialCard"
 
@@ -34,10 +32,11 @@ const UserPage = () => {
             {
                 user && <p>
                     <h1 className="welcome"> ¡Bienvenid@, {user.username} :)!</h1>
-
                 </p>
             }
+
             {/* 
+
             <Container>
 
                 <hr />
@@ -51,7 +50,9 @@ const UserPage = () => {
 
                     </Col>
                 </Row> */}
+
             {/* </Container>  */}
+
             <Row xs={1} md={2} className="g-6 justify-content-center">
 
                 <MaterialCard />

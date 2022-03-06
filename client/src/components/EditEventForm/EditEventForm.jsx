@@ -33,7 +33,6 @@ const EditEventForm = () => {
             [name]: value
         })
     }
-
     const uploadImage = e => {
         setLoadingImage(true)
 
@@ -69,6 +68,7 @@ const EditEventForm = () => {
 
 
     return ( // añadir container y row 
+
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="title">
                 <Form.Label>Nombre del evento</Form.Label>

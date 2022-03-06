@@ -30,10 +30,13 @@ const AppRoutes = () => {
             <Route path="/eventos/crear-evento" element={<NewEventForm />} />
             <Route path="/eventos/modificar-evento/:id" element={<EditEventForm />} />
 
+
             {/* RESTO DE RUTAS */}
+
             {/* + AÑADIR 404 */}
 
             {/* PROTEGIDAS */}
+
             <Route path="/usuario" element={<PrivateRoute />}>
                 <Route path="" element={<UserPage />} />
             </Route>
