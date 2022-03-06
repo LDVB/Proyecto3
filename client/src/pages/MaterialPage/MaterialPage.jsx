@@ -1,10 +1,11 @@
+import MaterialCard from "../../components/MaterialCard/MaterialCard"
 
 
 const MaterialPage = () => {
 
     return (
         <>
-            <h1>HOLA</h1>
+            <MaterialCard/>
             
 
         </>
