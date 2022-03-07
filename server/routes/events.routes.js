@@ -8,8 +8,6 @@ const Comment = require("../models/Comment.model");
 
 router.post("/crear-evento", isAuthenticated, (req, res, next) => {
 
-  //res.json("esto es la creación de eventos ")
-
   const event = { ...req.body, owner: req.payload._id }
 
   console.log('DEBERIA TENER LA LOCALIZACION', event)
@@ -75,6 +73,20 @@ router.get("/detalles/:id", (req, res, next) => {
     .then(response => res.json(response))
     .catch(err => res.status(500).json(err))
 });
+
+// Comentario Eventos
+
+router.post("/detalles/:id/comentarios", (req, res) =>{
+
+  const { id } = req.params
+  const { text } = req.body
+
+  Comment
+    .create({ text, event: id, owner: req.payload._id})
+    .then(response => res.json(response))
+    .catch(err => res.status(500).json(err))
+
+})
 
 
 

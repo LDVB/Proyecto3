@@ -4,6 +4,7 @@ import eventsService from '../../services/events.service'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import EditEventForm from '../../components/EditEventForm/EditEventForm'
 
+
 function EventDetailsPage() {
 
     const [eventDetails, setEventDetails] = useState({})
@@ -50,6 +51,8 @@ function EventDetailsPage() {
                 <Link to={`/eventos/modificar-evento/${eventDetails._id}`}>
                     <Button variant="light">Editar evento</Button>
                 </Link>
+
+                {/* <comentarios/> */}
 
                 <Button variant="light" onClick={deleteEvent}>Borrar evento</Button>
             </Row>

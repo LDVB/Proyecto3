@@ -68,7 +68,8 @@ const EditEventForm = () => {
 
 
 
-    return ( // añadir container y row 
+    return ( 
+        
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="title">
                 <Form.Label>Nombre del evento</Form.Label>

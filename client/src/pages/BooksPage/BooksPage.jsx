@@ -1,16 +1,12 @@
-import Books from "../../components/Books/Books"
-import {Row, Col} from 'react-bootstrap'
+import BooksList from "../../components/BooksList/BooksList"
+import "../../services/material.service"
 
-
-const BooksPage = ({books}) => {
+const BooksPage = () => {
 
     return (
-        <Row>
-            {books.map(book => {
-            return <Col md={4} key={book._id}> <Books {...book}/></Col>
-
-            })}
-        </Row>
+        <>
+            <BooksList/>
+        </>
 
     )
 

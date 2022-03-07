@@ -140,7 +140,7 @@ const material = [
         name: "Spaces Castellana",
         details: "",
         type: "Coworking",
-        image: "https://cdn.lifestylealcuadrado.com/wp-content/uploads/2015/09/rework-cover-front-big1.png",
+        image: "https://coworkingspain.es/sites/default/files/coworking/spacescastellana1_4.jpg",
         description:
             "Paseo de la Castellana, 200, Madrid 28046, España",
 

@@ -34,7 +34,6 @@ function LoginForm() {
         authService
             .login(loginForm)
             .then(({ data }) => {
-                //console.log("JWT token", data.authToken)
                 storeToken(data.authToken)
                 authenticateUser()
                 navigate('/usuario')

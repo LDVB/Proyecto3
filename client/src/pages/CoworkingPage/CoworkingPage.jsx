@@ -1,11 +1,11 @@
-import Coworking from "../../components/Coworking/Coworking"
-
+import CoworkingList from "../../components/CoworkingList/CoworkingList"
+import "../../services/material.service"
 
 const CoworkingPage = () => {
 
     return (
         <>
-            <Coworking/>
+            <CoworkingList/>
         </>
 
     )
