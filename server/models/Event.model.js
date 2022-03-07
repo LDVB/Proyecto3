@@ -21,11 +21,7 @@ const eventSchema = new Schema(
     },
 
     location: {
-      // type: {
       type: String,
-      // default: 'Point',
-      // },
-      // coordinates: [Number],
     },
 
     image: {

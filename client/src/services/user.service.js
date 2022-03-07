@@ -1,31 +1,30 @@
-// import axios from 'axios'
+import axios from 'axios'
 
-// class UserService {
-//     constructor() {
-//         this.axios = axios.create({ baseURL: 'http://localhost:5005/api/user' })
+class UserService {
+    constructor() {
+        this.axios = axios.create({ baseURL: 'http://localhost:5005/api/user' })
 
-//         this.axios.interceptors.request.use((config) => {
+        this.axios.interceptors.request.use((config) => {
 
-//             const storedToken = localStorage.getItem("authToken");
+            const storedToken = localStorage.getItem("authToken");
 
-//             if (storedToken) {
-//                 config.headers = { Authorization: `Bearer ${storedToken}` }
-//             }
+            if (storedToken) {
+                config.headers = { Authorization: `Bearer ${storedToken}` }
+            }
+            return config
+        })
+    }
 
-//             return config
-//         })
-//     }
+    getOneUserById(id) {
+        return this.axios.get(`/getUserById/${id}`)
+    }
 
-//     getOneUserById(id) {
-//         return this.axios.get(`/getUserById/${id}`)
-//     }
+    // getAllUsers() {
+    //     return this.axios.get('/getAllUsers')
+    // }
 
-//     getAllUsers() {
-//         return this.axios.get('/')
-//     }
+}
 
-// }
+const userService = new UserService()
 
-// const userService = new UserService()
-
-// export default userService
+export default userService

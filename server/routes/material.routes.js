@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Material = require("../models/Material.model");
 
 //Listado Material
+
 router.get("/listado", (req, res, next) => {
 
   Material
@@ -11,6 +12,7 @@ router.get("/listado", (req, res, next) => {
 });
 
 //Listado Libros
+
 router.get("/libros", (req, res, next) => {
 
   Material
@@ -19,8 +21,8 @@ router.get("/libros", (req, res, next) => {
     .catch(err => res.status(500).json(err))
 });
 
-
 // Listado Coworking
+
 router.get("/coworking", (req, res, next) => {
 
   Material
@@ -28,6 +30,5 @@ router.get("/coworking", (req, res, next) => {
     .then(response => res.json(response))
     .catch(err => res.status(500).json(err))
 });
-
 
 module.exports = router;

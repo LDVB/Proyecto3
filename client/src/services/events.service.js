@@ -36,8 +36,15 @@ class EventsService {
     deleteOneEvent = id => {
         return this.api.delete(`/borrar-evento/${id}`)
     }
+    assitEvent = event_id => {
+        return this.api.put(`/detalles/${event_id}/asistir`)
+    }
+    doNotAssistEvent = id => {
+        return this.api.put(`/detalles/${id}/desapuntarse`)
+    }
 
 }
 
 const eventsService = new EventsService()
+
 export default eventsService

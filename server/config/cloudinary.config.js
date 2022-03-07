@@ -4,8 +4,8 @@ const multer = require('multer')
 
 cloudinary.config({
 
-    Cloud_Name: process.env.CLOUDINARY_NAME,
-    api_Key: process.env.CLOUDINARY_KEY,
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
     api_secret: process.env.CLOUDINARY_SECRET
 })
 

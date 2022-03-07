@@ -19,7 +19,6 @@ const EditEventForm = () => {
 
     const { name, date, location, image, description } = eventData
 
-
     const [loadingImage, setLoadingImage] = useState(false)
 
     const navigate = useNavigate()
@@ -33,6 +32,7 @@ const EditEventForm = () => {
             [name]: value
         })
     }
+
     const uploadImage = e => {
         setLoadingImage(true)
 
@@ -64,8 +64,6 @@ const EditEventForm = () => {
 
             .catch(err => console.log(err))
     }
-
-
 
     return ( // añadir container y row 
 

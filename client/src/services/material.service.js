@@ -17,10 +17,6 @@ class MaterialService {
         })
     }
 
-    getAllMaterial = () => {
-        return this.api.get('/listado')
-    }
-
     getAllBooks = () => {
         return this.api.get('/libros')
     }

@@ -1,10 +1,8 @@
 import { useState, useContext } from "react"
 import { Form, Button } from 'react-bootstrap'
 import authService from '../../services/auth.service'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { AuthContext } from "../../context/auth.context"
-
-
 
 
 function LoginForm() {
@@ -34,7 +32,6 @@ function LoginForm() {
         authService
             .login(loginForm)
             .then(({ data }) => {
-                //console.log("JWT token", data.authToken)
                 storeToken(data.authToken)
                 authenticateUser()
                 navigate('/usuario')
@@ -55,6 +52,10 @@ function LoginForm() {
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" name="password" value={loginForm.password} onChange={handleInputChange} />
             </Form.Group>
+
+            {/* <Link to="/usuario">
+                <Button variant="light" type="submit" style={{ width: '100%' }}>Iniciar sesión</Button>
+            </Link> */}
 
             <Button variant="light" type="submit" style={{ width: '100%' }}>Iniciar sesión</Button>
 

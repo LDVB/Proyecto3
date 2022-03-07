@@ -1,14 +1,11 @@
 
-import { Button, Card, Container, Row, Col } from 'react-bootstrap'
-import authService from "../../services/auth.service"
-import EventsService from '../../services/events.service'
-//importar el service de material también
-import { useNavigate, Link } from 'react-router-dom'
+import { Card, Container, Row, Col } from 'react-bootstrap'
 import { AuthContext } from '../../context/auth.context'
 import { useContext } from 'react'
-// import userService from '../../services/user.service'
 import { useEffect, useState } from 'react'
 import MaterialCard from "../../components/MaterialCard/MaterialCard"
+import userService from "../../services/user.service"
+import UserCard from '../../components/UserCard/UserCard'
 
 
 const UserPage = () => {
@@ -19,47 +16,36 @@ const UserPage = () => {
 
     // const [userInformation, setUserInformation] = useState({})
 
+    // const { id } = useParams()
+    // const { user } = useContext(AuthContext)
+
     // useEffect(() => {
     //     userService
-    //         .getOneUser(user)
+    //         .getOneUserById(id)
     //         .then(({ data }) => setUserInformation(data))
     //         .catch(err => console.log(err))
 
-    // }, [user])
+    // }, [id])
 
     return (
         <>
-            {
-                user && <p>
-                    <h1 className="welcome"> ¡Bienvenid@, {user.username} :)!</h1>
-                </p>
-            }
-
-            {/* 
-
-            <Container>
-
-                <hr />
-                {/* <Row>
-                    <Col md={{ span: 4, offset: 1 }}>
-                        <h3>{userInformation?.username}</h3>
-                        <img style={{ width: '100%' }} src={userInformation.avatar} alt="imagen de usuari@" />
-                        <p>Nivel :{userInformation.level} </p>
-                        <p>LinkedIn: {userInformation.linkedIn} </p>
-                        <p>Sobre mí: {userInformation.description} </p>
-
-                    </Col>
-                </Row> */}
-
-            {/* </Container>  */}
-
             <Row xs={1} md={2} className="g-6 justify-content-center">
 
                 <MaterialCard />
+                {console.log(user)}
+
+                <Card className="UserCard">
+                    <Card.Img variant="top" src={user.image} />
+                    <Card.Body>
+                        <Card.Title> Nombre:{user.username}</Card.Title>
+                        <Card.Title> Nivel:{user.level}</Card.Title>
+                        <Card.Title> Edad:{user.age}</Card.Title>
+                        <Card.Title> Linkedin:{user.linkedin}</Card.Title>
+                        <Card.Title> Sobre el usuario:{user.description}</Card.Title>
+                    </Card.Body>
+                </Card >
 
             </Row>
-
-
         </>
     )
 }

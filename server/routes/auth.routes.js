@@ -11,10 +11,7 @@ const saltRounds = 10
 
 router.post('/registro', (req, res, next) => {
 
-  // res.json("esto es el registro");
-
   const { email, password, username, avatar, age, linkedin, description } = req.body
-
 
   if (email === '' || password === '' || username === '') {
     res.status(400).json({ message: "Introduce una contraseña y un nombre de usuario" })
@@ -45,6 +42,7 @@ router.post('/registro', (req, res, next) => {
 
       return User.create({ email, password: hashedPassword, username, avatar, age, linkedin, description })
     })
+
     .then((createdUser) => {
       const { email, username, _id } = createdUser
 
@@ -52,6 +50,7 @@ router.post('/registro', (req, res, next) => {
 
       res.status(201).json({ user })
     })
+
     .catch(err => {
       console.log(err)
       res.status(500).json({ message: "Error interno de servidor" })
@@ -62,8 +61,6 @@ router.post('/registro', (req, res, next) => {
 // inicio sesión
 
 router.post("/inicio-sesion", (req, res, next) => {
-
-  // res.json("esto es el inicio");
 
   const { email, password } = req.body;
 
@@ -94,29 +91,33 @@ router.post("/inicio-sesion", (req, res, next) => {
         );
 
         res.status(200).json({ authToken });
-      }
-      else {
+
+      } else {
         res.status(401).json({ message: "No ha sido posible autentificar al usuario" });
       }
     })
+
     .catch(err => {
       console.log(err)
       res.status(500).json({ message: "Error interno de servidor " })
     })
 });
 
+// verificar si está logueado
 
-// verificar si está logeado
 router.get('/verify', isAuthenticated, (req, res, next) => {
+
   res.status(200).json(req.payload)
+
 })
 
 // cerrar sesión
 
 router.get("/cerrar-sesion", (req, res, next) => {
-  res.json("esto es el cierre de sesión ");
-});
 
+  res.json("esto es el cierre de sesión ");
+
+});
 
 
 module.exports = router;

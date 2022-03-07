@@ -1,7 +1,7 @@
 import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const EventCard = ({ name, date, location, image, description, _id }) => {
+const EventCard = ({ name, date, image, _id }) => {
     return (
         <Card className="EventCard">
             <Card.Img variant="top" src={image} />

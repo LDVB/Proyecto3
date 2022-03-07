@@ -20,13 +20,8 @@ const Navigation = () => {
                         width="100%"
                         height="30"
                         className="d-inline-block align-top"
-                    />{' '}
-                    
+                    />
                 </NavLink>
-
-                {/* <NavLink to="/">
-                    <Navbar.Brand as="span">KICK OFF</Navbar.Brand>
-                </NavLink> */}
 
                 {
                     !isLoggedIn ?
@@ -44,9 +39,7 @@ const Navigation = () => {
                                 <Nav.Link as="span">Perfil de {user?.username}!</Nav.Link>
                             </NavLink>
                             <Nav.Link as="span" onClick={logOutUser}>Cerrar sesión</Nav.Link>
-
                         </>
-
                 }
             </Container>
         </Navbar >

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { isAuthenticated } = require('../middlewares/jwt.middleware')
+const { isAuthenticated, isLoggedIn } = require('../middlewares/jwt.middleware')
 const Event = require("../models/Event.model");
 const User = require("../models/User.model");
 const Comment = require("../models/Comment.model");
@@ -8,11 +8,8 @@ const Comment = require("../models/Comment.model");
 
 router.post("/crear-evento", isAuthenticated, (req, res, next) => {
 
-  //res.json("esto es la creación de eventos ")
-
   const event = { ...req.body, owner: req.payload._id }
-
-  console.log('DEBERIA TENER LA LOCALIZACION', event)
+  console.log(req.payload)
 
   Event
     .create(event)
@@ -26,33 +23,42 @@ router.post("/crear-evento", isAuthenticated, (req, res, next) => {
 router.put("/modificar-evento/:id", isAuthenticated, (req, res, next) => {
 
   const { id } = req.params
+  console.log(req.payload)
 
-  Event
-    .findByIdAndUpdate(id, req.body)
-    .then(response => res.json(response))
-    .catch(err => res.status(500).json(err))
+  if (req.payload._id !== id) {
+
+    res.json({ ErrorMessage: "No estás atuorizado a modificar el evento" })
+
+  } else {
+    Event
+      .findByIdAndUpdate(id, req.body)
+      .then(response => res.json(response))
+      .catch(err => res.status(500).json(err))
+  }
 });
 
 //borrar Evento  
 
-router.delete("/borrar-evento/:id", (req, res, next) => {
+router.delete("/borrar-evento/:id", isAuthenticated, (req, res, next) => {
 
-  //res.json("esto es la eliminación de eventos ");
   const { id } = req.params
+  console.log(req.payload)
 
-  Event
-    .findByIdAndDelete(id)
-    .then(response => res.json(response))
-    .catch(err => res.status(500).json(err))
+  if (req.payload._id !== id) {
 
+    res.json({ ErrorMessage: "No estás atuorizado a modificar el evento" })
+
+  } else {
+    Event
+      .findByIdAndDelete(id)
+      .then(response => res.json(response))
+      .catch(err => res.status(500).json(err))
+  }
 });
-
 
 // Listado de Eventos
 
 router.get("/listado", (req, res, next) => {
-
-  //  res.json("estos son los eventos ");
 
   Event
     .find()
@@ -61,12 +67,9 @@ router.get("/listado", (req, res, next) => {
     .catch(err => res.status(500).json(err))
 });
 
-
 // Detalles de eventos
 
 router.get("/detalles/:id", (req, res, next) => {
-
-  //res.json("este es el detalle del evento");
 
   const { id } = req.params
 
@@ -76,7 +79,42 @@ router.get("/detalles/:id", (req, res, next) => {
     .catch(err => res.status(500).json(err))
 });
 
+// Asistir a un evento
 
+router.put('/detalles/:event_id/asistir', isAuthenticated, (req, res) => {
 
+  const { event_id } = req.params
+  const { _id } = req.payload
+
+  Event
+    .findByIdAndUpdate(event_id, { $push: { assistants: _id } })
+    .then(response => res.json(response))
+    .catch(err => res.status(500).json(err))
+})
+
+// Desapuntarse de un evento
+
+router.put('/detalles/:event_id/desapuntarse', isAuthenticated, (req, res) => {
+
+  const { event_id } = req.params
+  const { _id } = req.payload
+
+  Event
+    .findByIdAndUpdate(event_id, { $pull: { assistants: _id } })
+    .then(response => res.json(response))
+    .catch(err => res.status(500).json(err))
+})
+
+// Mis eventos
+// router.get('/mis-eventos', isAuthenticated, (req, res, next) => {
+
+//   const { _id } = req.payload
+
+//   Event
+//     .findOne({ owner: _id })
+//     .then(filteredEvents => res.json(filteredEvents))
+//     .catch(err => console.log(err))
+// })
 
 module.exports = router;
+
