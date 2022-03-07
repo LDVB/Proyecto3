@@ -67,7 +67,7 @@ const NewEventForm = () => {
     }
 
     return ( // añadir container y row 
-        <Form onSubmit={handleSubmit}>
+        <Form className="mb-3" onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="title">
                 <Form.Label>Nombre del evento</Form.Label>
                 <Form.Control type="text" value={name} onChange={handleInputChange} name="name" />

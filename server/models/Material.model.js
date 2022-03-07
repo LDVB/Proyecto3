@@ -12,6 +12,7 @@ const materialSchema = new Schema(
             enum: ['Book', 'Coworking']
         },
 
+
         details: {
             type: String,
 

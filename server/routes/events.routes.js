@@ -79,6 +79,21 @@ router.get("/detalles/:id", (req, res, next) => {
     .catch(err => res.status(500).json(err))
 });
 
+
+// Comentario Eventos
+
+router.post("/detalles/:id/comentarios", (req, res) => {
+
+  const { id } = req.params
+  const { text } = req.body
+
+  Comment
+    .create({ text, event: id, owner: req.payload._id })
+    .then(response => res.json(response))
+    .catch(err => res.status(500).json(err))
+
+})
+
 // Asistir a un evento
 
 router.put('/detalles/:event_id/asistir', isAuthenticated, (req, res) => {

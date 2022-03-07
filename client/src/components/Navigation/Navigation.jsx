@@ -1,8 +1,9 @@
+import './Navigation.css'
 import { useContext } from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { AuthContext } from '../../context/auth.context'
-import './Navigation.css'
+
 
 
 
@@ -17,10 +18,9 @@ const Navigation = () => {
                     <img
                         alt="Logo"
                         src="/logo.png"
-                        width="100%"
-                        height="30"
                         className="d-inline-block align-top"
                     />
+
                 </NavLink>
 
                 {

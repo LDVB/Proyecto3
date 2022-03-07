@@ -31,4 +31,14 @@ router.get("/coworking", (req, res, next) => {
     .catch(err => res.status(500).json(err))
 });
 
+// Coworking - listado
+
+router.get("/coworking", (req, res, next) => {
+
+  Material
+    .find({ type: 'Coworking' })
+    .then(response => res.json(response))
+    .catch(err => res.status(500).json(err))
+});
+
 module.exports = router;

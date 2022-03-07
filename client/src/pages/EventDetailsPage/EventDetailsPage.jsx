@@ -7,6 +7,7 @@ import { useContext } from 'react'
 import { AuthContext } from "../../context/auth.context"
 import AsisstantsList from '../../components/AssistantsList/AssistantList'
 
+
 function EventDetailsPage() {
 
     const [eventDetails, setEventDetails] = useState({})

@@ -28,4 +28,5 @@ class MaterialService {
 }
 
 const materialService = new MaterialService()
+
 export default materialService

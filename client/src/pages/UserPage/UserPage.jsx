@@ -1,7 +1,18 @@
+<<<<<<< HEAD
 
 import { Card, Container, Row, Col } from 'react-bootstrap'
 import { AuthContext } from '../../context/auth.context'
 import { useContext } from 'react'
+=======
+import { Button, Card, Container, Row, Col } from 'react-bootstrap'
+import authService from "../../services/auth.service"
+import EventsService from '../../services/events.service'
+import MaterialService from '../../services/material.service'
+import { useNavigate, Link } from 'react-router-dom'
+import { AuthContext } from '../../context/auth.context'
+import { useContext } from 'react'
+// import userService from '../../services/user.service'
+>>>>>>> refs/remotes/origin/main
 import { useEffect, useState } from 'react'
 import MaterialCard from "../../components/MaterialCard/MaterialCard"
 import userService from "../../services/user.service"
@@ -27,8 +38,16 @@ const UserPage = () => {
 
     // }, [id])
 
+
     return (
         <>
+            {
+                user && <p>
+                    <h1 className="welcome"> ¡Bienvenid@, {user.username} :)!</h1>
+
+                </p>
+            }
+
             <Row xs={1} md={2} className="g-6 justify-content-center">
 
                 <MaterialCard />
@@ -51,4 +70,3 @@ const UserPage = () => {
 }
 
 export default UserPage
-
