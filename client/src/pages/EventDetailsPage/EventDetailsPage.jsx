@@ -60,10 +60,11 @@ function EventDetailsPage() {
             <Row>
                 <Col md={{ span: 4, offset: 1 }}>
                     <h3>{eventDetails.name}</h3>
-                    <p>Fecha:{eventDetails.date?.slice(0, 10)}</p>
+                    {/* <p> Creado por: {eventDetails.description}</p> */}
+                    <p> Fecha:{eventDetails.date?.slice(0, 10)}</p>
                     <p> Lugar: {eventDetails.location}</p>
                     <p> Descripción: {eventDetails.description}</p>
-                    <p>Assistentes:{eventAssitantsArr?.map(eachAssitant => <AsisstantsList eachAssitant={eachAssitant} />)}</p>
+                    <p>Assistentes: {eventAssitantsArr?.map(eachAssitant => <AsisstantsList eachAssitant={eachAssitant} />)}</p>
                 </Col>
                 <Col md={6}>
                     <img style={{ width: '100%' }} src={eventDetails.image} alt={eventDetails.title} />
@@ -74,21 +75,24 @@ function EventDetailsPage() {
                 <Button variant="light">Volver</Button>
             </Link>
             {
-                user && (
-                    user._id === eventDetails.owner
-                ) ?
+                user && user._id === eventDetails.owner &&
+                <>
                     <Link to={`/eventos/modificar-evento/${eventDetails._id}`}>
                         <Button variant="light">Editar evento</Button>
-                    </Link> : null
+                    </Link>
+                    <Button variant="light" onClick={deleteEvent}>Borrar evento</Button>
+                </>
             }
+
             {
-                user && user._id === eventDetails.owner &&
-                <Button variant="light" onClick={deleteEvent}>Borrar evento</Button>
+                user && user._id !== eventDetails.owner &&
+                <>
+                    <Button variant="light" onClick={assistEvent}>Asistir al evento</Button>
+                    <Button variant="light" onClick={cancelAssistance}>Cancelar asistencia</Button>
+                </>
             }
 
-            <Button variant="light" onClick={assistEvent}>Asistir al evento</Button>
 
-            <Button variant="light" onClick={cancelAssistance}>Cancelar asistencia</Button>
 
         </Container>
     )

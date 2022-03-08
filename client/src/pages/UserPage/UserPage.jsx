@@ -5,9 +5,12 @@ import { useContext } from 'react'
 import { useEffect, useState } from 'react'
 import MaterialCard from "../../components/MaterialCard/MaterialCard"
 import userService from "../../services/user.service"
+import { useParams } from 'react-router-dom'
 
 
 const UserPage = () => {
+
+    const { user_id } = useParams()
 
     const { user, logOutUser } = useContext(AuthContext)
 
@@ -16,21 +19,22 @@ const UserPage = () => {
     const [userInformation, setUserInformation] = useState({})
 
     useEffect(() => {
-        user && userService
-            .getOneUserById(user._id)
+        user_id ? userService
+            .getOneUserById(user_id)
             .then(({ data }) => setUserInformation(data))
             .catch(err => console.log(err))
 
-    }, [user])
+            :
+
+            user && userService
+                .getOneUserById(user._id)
+                .then(({ data }) => setUserInformation(data))
+                .catch(err => console.log(err))
+
+    }, [user, user_id])
 
     return (
         <>
-            {
-                user && <p>
-                    <h1 className="welcome"> ¡Bienvenid@, {userInformation.username} :)!</h1>
-                </p>
-            }
-
             <Row xs={1} md={2} className="g-6 justify-content-center">
                 <MaterialCard />
                 <Card className="UserCard">

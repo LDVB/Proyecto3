@@ -31,6 +31,7 @@ const AppRoutes = () => {
             <Route path="/libros" element={<BooksPage />} />
             <Route path="/coworking" element={<CoworkingPage />} />
             <Route path="/usuario" element={<UserPage />} />
+            <Route path="/usuario/:user_id" element={<UserPage />} />
 
 
             {/* RESTO DE RUTAS */}

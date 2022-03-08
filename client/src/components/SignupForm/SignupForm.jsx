@@ -2,8 +2,11 @@ import { useState } from "react"
 import { Form, Button } from 'react-bootstrap'
 import authService from "../../services/auth.service"
 import { useNavigate } from 'react-router-dom'
+import uploadService from '../../services/upload.service'
+
 
 function SignupForm() {
+    const [loadingImage, setLoadingImage] = useState(false)
 
     const [signupForm, setSignupForm] = useState({
         username: "",
@@ -25,6 +28,24 @@ function SignupForm() {
             ...signupForm,
             [name]: value
         })
+    }
+
+    const uploadImage = e => {
+        setLoadingImage(true)
+
+        const uploadData = new FormData()
+        uploadData.append('image', e.target.files[0])
+
+        uploadService
+            .uploadImage(uploadData)
+            .then(({ data }) => {
+                setLoadingImage(false)
+                setSignupForm({
+                    ...signupForm,
+                    image: data.cloudinary_url
+                })
+            })
+            .catch(err => console.log(err))
     }
 
     function handleSubmit(e) {
@@ -65,7 +86,7 @@ function SignupForm() {
 
             <Form.Group>
                 <Form.Label>Photo</Form.Label>
-                <Form.Control type="file" name="image" value={signupForm.avatar} onChange={handleInputChange} />
+                <Form.Control type="file" name="image" onChange={uploadImage} />
             </Form.Group>
 
             <Form.Group>

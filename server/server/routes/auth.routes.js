@@ -9,12 +9,9 @@ const saltRounds = 10
 
 //registro
 
-router.post('/registro', (req, res, next) => {
+router.post('/registro', (req, res) => {
 
-  // res.json("esto es el registro");
-
-  const { email, password, username, avatar, age, linkedin, description } = req.body
-
+  const { email, password, username, image, age, linkedin, description } = req.body
 
   if (email === '' || password === '' || username === '') {
     res.status(400).json({ message: "Introduce una contraseña y un nombre de usuario" })
@@ -22,6 +19,7 @@ router.post('/registro', (req, res, next) => {
   }
 
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
   if (!emailRegex.test(email)) {
     res.status(400).json({ message: 'Introduce una dirección de email correcta.' })
     return
@@ -41,10 +39,12 @@ router.post('/registro', (req, res, next) => {
       }
 
       const salt = bcrypt.genSaltSync(saltRounds)
+
       const hashedPassword = bcrypt.hashSync(password, salt)
 
-      return User.create({ email, password: hashedPassword, username, avatar, age, linkedin, description })
+      return User.create({ email, password: hashedPassword, username, image, age, linkedin, description })
     })
+
     .then((createdUser) => {
       const { email, username, _id } = createdUser
 
@@ -52,6 +52,7 @@ router.post('/registro', (req, res, next) => {
 
       res.status(201).json({ user })
     })
+
     .catch(err => {
       console.log(err)
       res.status(500).json({ message: "Error interno de servidor" })
@@ -61,9 +62,7 @@ router.post('/registro', (req, res, next) => {
 
 // inicio sesión
 
-router.post("/inicio-sesion", (req, res, next) => {
-
-  // res.json("esto es el inicio");
+router.post("/inicio-sesion", (req, res) => {
 
   const { email, password } = req.body;
 
@@ -114,9 +113,8 @@ router.get('/verify', isAuthenticated, (req, res, next) => {
 // cerrar sesión
 
 router.get("/cerrar-sesion", (req, res, next) => {
-  res.json("esto es el cierre de sesión ");
+  // res.json("esto es el cierre de sesión ");
 });
-
 
 
 module.exports = router;

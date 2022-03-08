@@ -27,11 +27,11 @@ const EventsListPage = () => {
             <Link to="/eventos/listado">
                 <EventsList events={events} />
             </Link>
-
             <Link to="/eventos/crear-evento">
                 <Button variant="light">Crear evento</Button>
             </Link>
         </Container>
+
 
     )
 

@@ -65,7 +65,7 @@ function SignupForm() {
 
             <Form.Group>
                 <Form.Label>Photo</Form.Label>
-                <Form.Control type="file" name="image" value={signupForm.avatar} onChange={handleInputChange} />
+                <Form.Control type="file" name="image" value={signupForm.image} onChange={handleInputChange} />
             </Form.Group>
 
             <Form.Group>

@@ -9,7 +9,7 @@ const saltRounds = 10
 
 //registro
 
-router.post('/registro', (req, res, next) => {
+router.post('/registro', (req, res) => {
 
   const { email, password, username, age, linkedin, description, level, image } = req.body
 
@@ -19,6 +19,7 @@ router.post('/registro', (req, res, next) => {
   }
 
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
   if (!emailRegex.test(email)) {
     res.status(400).json({ message: 'Introduce una dirección de email correcta.' })
     return
