@@ -53,10 +53,6 @@ function LoginForm() {
                 <Form.Control type="password" name="password" value={loginForm.password} onChange={handleInputChange} />
             </Form.Group>
 
-            {/* <Link to="/usuario">
-                <Button variant="light" type="submit" style={{ width: '100%' }}>Iniciar sesión</Button>
-            </Link> */}
-
             <Button variant="light" type="submit" style={{ width: '100%' }}>Iniciar sesión</Button>
 
         </Form>

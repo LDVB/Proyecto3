@@ -26,6 +26,7 @@ function AuthProviderWrapper(props) {
     const authenticateUser = () => {
 
         const storedToken = getToken()
+        setIsLoading(true)
 
         if (!storedToken) {
             logOutUser()

@@ -8,17 +8,7 @@ function PrivateRoute() {
 
     const { isLoggedIn, isLoading } = useContext(AuthContext)
 
-    if (isLoading) {
-
-        return <LoadingSpinner />
-    }
-
-    if (!isLoggedIn) {
-
-        return <Navigate to="/inicio-sesion" />
-    }
-
-    return <Outlet />
+    return isLoading ? <LoadingSpinner /> : !isLoggedIn ? <Navigate to="/inicio-sesion" /> : <Outlet />
 }
 
 export default PrivateRoute

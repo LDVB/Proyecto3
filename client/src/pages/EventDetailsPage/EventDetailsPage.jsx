@@ -81,14 +81,10 @@ function EventDetailsPage() {
                         <Button variant="light">Editar evento</Button>
                     </Link> : null
             }
-            {/* {
-                user && (
-                    user._id === eventDetails.owner
-                ) ?
-                    <Button variant="light" onClick={deleteEvent}>Borrar evento</Button> : null
-            } */}
-
-            <Button variant="light" onClick={deleteEvent}>Borrar evento</Button>
+            {
+                user && user._id === eventDetails.owner &&
+                <Button variant="light" onClick={deleteEvent}>Borrar evento</Button>
+            }
 
             <Button variant="light" onClick={assistEvent}>Asistir al evento</Button>
 

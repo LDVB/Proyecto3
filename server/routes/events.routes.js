@@ -23,18 +23,21 @@ router.post("/crear-evento", isAuthenticated, (req, res, next) => {
 router.put("/modificar-evento/:id", isAuthenticated, (req, res, next) => {
 
   const { id } = req.params
-  console.log(req.payload)
 
-  if (req.payload._id !== id) {
+  Event.findById(id)
+    .then(event => {
 
-    res.json({ ErrorMessage: "No estás atuorizado a modificar el evento" })
+      console.log('owner', event.owner, req.payload._id, event.owner == req.payload._id)
+      if (req.payload._id != event.owner) {
 
-  } else {
-    Event
-      .findByIdAndUpdate(id, req.body)
-      .then(response => res.json(response))
-      .catch(err => res.status(500).json(err))
-  }
+        res.json({ ErrorMessage: "No estás atuorizado a modificar el evento" })
+
+      } else {
+        return Event.findByIdAndUpdate(id, req.body, { new: true })
+      }
+    })
+    .then(response => res.json(response))
+    .catch(err => res.status(500).json(err))
 });
 
 //borrar Evento  
@@ -120,15 +123,17 @@ router.put('/detalles/:event_id/desapuntarse', isAuthenticated, (req, res) => {
     .catch(err => res.status(500).json(err))
 })
 
-// Mis eventos
-// router.get('/mis-eventos', isAuthenticated, (req, res, next) => {
+// añadir comentarios
 
-//   const { _id } = req.payload
+// router.post('/detalles/:event_id/comments', isAuthenticated, (req, res, next) => {
 
-//   Event
-//     .findOne({ owner: _id })
-//     .then(filteredEvents => res.json(filteredEvents))
-//     .catch(err => console.log(err))
+//   const { event_id } = req.params
+//   const { text } = req.payload
+
+//   Comment
+//     .create({ text, event: event_id, owner: req.payload._id })
+//     .then(() => res.redirect(`/eventos/detalles/${event_id}`))
+//     .catch(err => next(err))
 // })
 
 module.exports = router;

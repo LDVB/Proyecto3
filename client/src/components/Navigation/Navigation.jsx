@@ -35,10 +35,10 @@ const Navigation = () => {
                         </>
                         :
                         <>
-                            <NavLink to="/usuario">
-                                <Nav.Link as="span">Perfil de {user?.username}!</Nav.Link>
-                            </NavLink>
-                            <Nav.Link as="span" onClick={logOutUser}>Cerrar sesión</Nav.Link>
+                            {/* <NavLink to="/usuario">
+                                <Nav.Link >Perfil de {user?.username}</Nav.Link>
+                            </NavLink> */}
+                            <Nav.Link onClick={logOutUser}>Cerrar sesión</Nav.Link>
                         </>
                 }
             </Container>
